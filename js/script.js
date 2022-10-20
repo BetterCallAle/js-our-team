@@ -1,5 +1,6 @@
 // Extract DOM elements
-const div = document.querySelector("div")
+const row = document.querySelector(".row")
+console.log(row);
 
 //Create an Array with object
 const companyMembers = [
@@ -15,9 +16,7 @@ console.log(companyMembers);
 //cycle the array for working with every elements
 for (let i = 0; i < companyMembers.length; i++) {
     let thisMember = companyMembers[i];
-    div.innerHTML += `<h2>Nome e Cognome: ${thisMember.name} ${thisMember.surname} </h2>
-                      <h2>Ruolo: ${thisMember.role}</h2>
-                      <img src="img/${thisMember.img}" alt="Foto di ${thisMember.name} ${thisMember.surname}">`
+    row.innerHTML += stampOutput(thisMember)
 }
 
 
@@ -40,4 +39,27 @@ function giveTheObject(memberName, memberSurname, memberRole, memberImg) {
     }
 
     return object
+}
+
+/**
+ * Description return a string with HTML elements for stamping the output
+ * @param {object} member the object you want to stamp
+ * @returns {string} the HTML output
+ */
+function stampOutput(member) {
+    
+    const htmlStructure = `<div class="col">
+                                <div class="ms_card">
+                                    <div class="ms_card-top">
+                                        <img src="img/${member.img}" alt="Foto di ${member.name} ${member.surname}">
+                                    </div>
+
+                                    <div class="ms_card-bottom text-center py-2">
+                                        <h2>${member.name} ${member.surname}</h2>
+                                        <h3>${member.role}</h3>
+                                    </div>
+                                </div>
+                            </div>`
+    
+    return htmlStructure
 }

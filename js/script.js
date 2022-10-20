@@ -1,3 +1,6 @@
+// Extract DOM elements
+const div = document.querySelector("div")
+
 //Create an Array with object
 const companyMembers = [
     giveTheObject("Wyne", "Barnett", "Founder & CEO", "wayne-barnett-founder-ceo.jpg"),
@@ -9,7 +12,13 @@ const companyMembers = [
 ];
 console.log(companyMembers);
 
-
+//cycle the array for working with every elements
+for (let i = 0; i < companyMembers.length; i++) {
+    let thisMember = companyMembers[i];
+    div.innerHTML += `<h2>Nome e Cognome: ${thisMember.name} ${thisMember.surname} </h2>
+                      <h2>Ruolo: ${thisMember.role}</h2>
+                      <img src="img/${thisMember.img}" alt="Foto di ${thisMember.name} ${thisMember.surname}">`
+}
 
 
 // FUNCTIONS
